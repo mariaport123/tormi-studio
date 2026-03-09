@@ -2,16 +2,17 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Geist } from "next/font/google";
 import "./globals.css";
+
+// Components
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 
-// Primary brand typeface
 const brandFont = localFont({
   src: "../fonts/Impact.ttf", 
   variable: "--font-brand",
 });
 
-// Clean sans for UI and body copy
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,13 +30,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${brandFont.variable} antialiased bg-[#fafafa] text-[#1a1a1a]`}
-      >
-        {/* Lenis wrapper for momentum scrolling */}
+      <body className={`${geistSans.variable} ${brandFont.variable} antialiased bg-[#fafafa] text-[#1a1a1a]`}>
+        {/* Lenis wrapper for smooth momentum scrolling */}
         <SmoothScroll>
-          <Navbar />
-          <main>{children}</main>
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            
+            {/* Main content wrapper */}
+            <main className="flex-grow">
+              {children}
+            </main>
+            
+            <Footer />
+          </div>
         </SmoothScroll>
       </body>
     </html>
