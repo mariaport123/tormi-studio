@@ -1,7 +1,19 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'BrandFont';
+  src: url('../fonts/Impact.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  /* Soft white background for that gallery feel */
+  --font-brand: 'BrandFont';
+}
+
+:root {
+  /* Soft white background */
   --background: #fafafa; 
   --foreground: #1a1a1a;
 }
@@ -36,3 +48,4 @@ html.lenis, html.lenis body {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
